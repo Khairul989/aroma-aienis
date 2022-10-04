@@ -12,7 +12,7 @@ import CakeRounded from '@mui/icons-material/CakeRounded';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
-const pages = ['Products', 'Pricing', 'About'];
+const pages = ['Products', 'About'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 interface MyAppProps extends AppProps {
@@ -44,10 +44,9 @@ export default function MyApp(props: MyAppProps) {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       {/*} Appbar widget */}
-      <AppBar position="static">
+      <AppBar position="sticky" sx={{ background:"#EE979F", color:"black" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <CakeRounded sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -59,13 +58,12 @@ export default function MyApp(props: MyAppProps) {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.1rem',
-              color: 'inherit',
+              color: 'white',
               textDecoration: 'none',
             }}
           >
             AromaAienis
           </Typography>
-
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -102,7 +100,6 @@ export default function MyApp(props: MyAppProps) {
               ))}
             </Menu>
           </Box>
-          <CakeRounded sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -114,12 +111,12 @@ export default function MyApp(props: MyAppProps) {
               flexGrow: 1,
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
+              letterSpacing: '.1rem',
+              color: 'white',
               textDecoration: 'none',
             }}
           >
-            LOGO
+            Aroma Aienis
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -131,36 +128,6 @@ export default function MyApp(props: MyAppProps) {
                 {page}
               </Button>
             ))}
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
           </Box>
         </Toolbar>
       </Container>

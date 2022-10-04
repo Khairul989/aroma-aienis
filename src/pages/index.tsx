@@ -17,7 +17,7 @@ export default function Index({cakeModel}:IndexProps){
         {cakeModel.map((cake) => (
             <Grid item xs={12} sm={3} key={cake.id}>
             <Link href="/cake/[id]" as={`/cake/${cake.id}`}>
-                <a>
+                {/* <a> */}
                 <Card>
                     <CardActionArea>
                     <CardMedia
@@ -31,17 +31,31 @@ export default function Index({cakeModel}:IndexProps){
                         <Typography gutterBottom variant="h5" component="h2">
                         {cake.name}
                         </Typography>
-                        <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        component="p"
-                        >
-                        {cake.description}
-                        </Typography>
+                        <Grid container spacing={2} justifyContent="space-between">
+                            <Grid item xs={12} md={10}>
+                                <Typography
+                                    variant="body2"
+                                    color="textSecondary"
+                                    component="p"
+                                    >
+                                    {cake.description}
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={12} md={2}>
+                                <Typography
+                                    variant="body2"
+                                    color="textSecondary"
+                                    component="p"
+                                    >
+                                    RM{cake.price}
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                    
                     </CardContent>
                     </CardActionArea>
                 </Card>
-                </a>
+                {/* </a> */}
             </Link>
             </Grid>
         ))}

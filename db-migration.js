@@ -14,9 +14,7 @@ async function setup(){
             migrationsPath:'./migrations',
             force:true,
         }
-    )
-    const cake = await db.all('select * from cake');
-    console.log(cake);
+    );
 }
 
 setup();
